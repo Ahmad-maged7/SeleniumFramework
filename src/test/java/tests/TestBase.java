@@ -6,10 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -22,7 +27,7 @@ extends AbstractTestNGCucumberTests
 {
 	public static WebDriver driver;
 	
-	@BeforeSuite
+	@BeforeClass
 	@Parameters({"browser"})
 	public void startDriver(@Optional ("chrome") String browserName)
 	{
@@ -39,6 +44,16 @@ extends AbstractTestNGCucumberTests
 		else if (browserName.equalsIgnoreCase("safari")) {
 			driver = new SafariDriver();
 		}
+		else if (browserName.equalsIgnoreCase("headless"))
+		{
+			DesiredCapabilities caps = new DesiredCapabilities();
+			caps.setJavascriptEnabled(true);
+			caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, 
+					System.getProperty("user.dir")+"/drivers/phantomjs");
+			String[] phantomJsArgs = {"--web-security=no","--ignore-ssl-errors=yes"};
+			caps.setCapability(PhantomJSDriverService.PHANTOMJS_GHOSTDRIVER_CLI_ARGS, phantomJsArgs);
+			driver = new PhantomJSDriver(caps);
+		}
 		
 		
 	    //driver = new ChromeDriver(); 
@@ -47,7 +62,7 @@ extends AbstractTestNGCucumberTests
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		
 	}
-	@AfterSuite
+	@AfterClass
 	public void stopDriver() throws InterruptedException 
 	{
 		Thread.sleep(3000);

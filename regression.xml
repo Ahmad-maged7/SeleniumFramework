@@ -1,11 +1,11 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="nopcommerce regrission suite">
-	<parameter name="browser" value="chrome"></parameter>
+	<parameter name="browser" value="headless"></parameter>
 	<test name="regrission Test" preserve-order="true">
 		<classes>
-			<class name="tests.ChangeCurrencyTest"></class>
+			
 			<class name="tests.SelectAfterHoverTest"></class>
-			<class name="tests.RegistrationFakeDataTest"></class>
+			
 
 		</classes>
 	</test> <!-- Test -->
