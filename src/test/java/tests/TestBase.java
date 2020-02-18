@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
@@ -32,7 +33,7 @@ extends AbstractTestNGCucumberTests
 	public void startDriver(@Optional ("chrome") String browserName)
 	{
 		if (browserName.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.edge.driver",System.getProperty("user.dir")+"/drivers/chromedriver");
+			System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/drivers/chromedriver");
 			driver = new ChromeDriver(); }
 			else if (browserName.equalsIgnoreCase("firefox")) {
 				driver = new FirefoxDriver();
@@ -54,9 +55,17 @@ extends AbstractTestNGCucumberTests
 			caps.setCapability(PhantomJSDriverService.PHANTOMJS_GHOSTDRIVER_CLI_ARGS, phantomJsArgs);
 			driver = new PhantomJSDriver(caps);
 		}
+		else if(browserName.equalsIgnoreCase("chrome.headless"))
+		{
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--headless");
+			options.addArguments("--window-size=1440,900");
+			driver = new ChromeDriver(options);
+			
+		}
 		
 		
-	    //driver = new ChromeDriver(); 
+	
 	    driver.manage().window().maximize();
 		driver.navigate().to("https://demo.nopcommerce.com");
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
