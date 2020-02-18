@@ -14,5 +14,4 @@ applying BDD & TDD
 
 github/Selenium demo.
 -------------------------------
-test
 
