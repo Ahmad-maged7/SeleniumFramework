@@ -6,7 +6,7 @@
 			
 			<class name="tests.SelectAfterHoverTest"></class>
 			<class name="tests.RegistrationFakeDataTest"></class>
-			<class name="tests.AddProductToCartAndUpdateQtyTest"></class>
+		
 			
 
 		</classes>
