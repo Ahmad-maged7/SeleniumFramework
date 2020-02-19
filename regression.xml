@@ -7,7 +7,7 @@
 			<class name="tests.SelectAfterHoverTest"></class>
 			<class name="tests.RegistrationFakeDataTest"></class>
 			<class name="tests.ContactUsTest"></class>
-		
+			<class name="tests.ChangeCurrencyTest"></class>
 
 
 		</classes>
