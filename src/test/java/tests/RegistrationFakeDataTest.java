@@ -2,6 +2,9 @@ package tests;
 
 
 import static org.testng.Assert.assertTrue;
+
+import java.util.concurrent.TimeUnit;
+
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -35,7 +38,7 @@ public class RegistrationFakeDataTest extends TestBase
 		System.out.println("the user data is "+" "+fName+" "+lName+" "+Email+" "+Pass);
 		assertTrue(registerObject.successMsg.getText().contains("registration"));
 		registerObject.userLogout();
-
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		registerObject.openLoginPage();
 		loginObject = new LoginPage(driver);
 		loginObject.userLogin(Email, Pass);
