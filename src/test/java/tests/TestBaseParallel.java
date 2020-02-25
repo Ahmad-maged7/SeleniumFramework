@@ -44,7 +44,7 @@ public class TestBaseParallel
 	@AfterClass
 	public void stopDriver() throws InterruptedException 
 	{
-		Thread.sleep(3000);
+		Thread.sleep(500);
 		getDriver().quit();
 		driver.remove();
 	}
