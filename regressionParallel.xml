@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="nopcommerce regrission suite" parallel="tests" thread-count="3">
+	
+	<test name="chrome regrission Test" >
+	<parameter name="browser" value="chrome"></parameter>
+		<classes>
+
+			<class name="tests.RegistrationFakeDataParallelTest"></class>
+			
+		</classes>
+	</test>
+	<test name="firefox regrission Test">
+	<parameter name="browser" value="firefox"></parameter>
+		<classes>
+
+			<class name="tests.RegistrationFakeDataParallelTest"></class>
+			
+		</classes>
+	</test>
+	<test name="safari regrission Test">
+	<parameter name="browser" value="safari"></parameter>
+		<classes>
+
+			<class name="tests.RegistrationFakeDataParallelTest"></class>
+			
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
