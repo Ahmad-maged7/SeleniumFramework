@@ -36,6 +36,7 @@ extends AbstractTestNGCucumberTests
 			System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/drivers/chromedriver");
 			driver = new ChromeDriver(); }
 			else if (browserName.equalsIgnoreCase("firefox")) {
+				System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"/drivers/geckodriver");
 				driver = new FirefoxDriver();
 			}
 			else if (browserName.equalsIgnoreCase("edge")) {
