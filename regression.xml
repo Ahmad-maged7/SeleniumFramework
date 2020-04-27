@@ -3,9 +3,12 @@
 	<parameter name="browser" value="chrome"></parameter>
 	<test name="regrission Test" preserve-order="true">
 		<classes>
-			<class name="tests.ChangeCurrencyTest"></class>
+
 			<class name="tests.SelectAfterHoverTest"></class>
 			<class name="tests.RegistrationFakeDataTest"></class>
+			<class name="tests.ContactUsTest"></class>
+		
+
 
 		</classes>
 	</test> <!-- Test -->
